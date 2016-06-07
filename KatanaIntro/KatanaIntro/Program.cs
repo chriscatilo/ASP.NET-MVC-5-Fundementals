@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace KatanaIntro
 {
@@ -28,14 +29,22 @@ namespace KatanaIntro
     {
         public void Configuration(IAppBuilder app)
         {
-            //app.UseWelcomePage(); // show a welcome page as implemented by Microsoft.Owin.Diagnostics
 
-            //app.Run(ctx =>
-            //{
-            //    return ctx.Response.WriteAsync("Hello World!");
-            //});
+            ConfiguerWebApi(app);
 
             app.Use<HelloWorldComponent>();
+        }
+
+        private void ConfiguerWebApi(IAppBuilder app)
+        {
+            var config = new HttpConfiguration();
+
+            config.Routes.MapHttpRoute(
+                "DefaultApi",
+                "api/{controller}/{id}",
+                new {id = RouteParameter.Optional});
+
+            app.UseWebApi(config);
         }
     }
 
