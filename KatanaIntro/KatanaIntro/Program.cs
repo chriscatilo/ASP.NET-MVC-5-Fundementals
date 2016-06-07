@@ -23,10 +23,13 @@ namespace KatanaIntro
     {
         public void Configuration(IAppBuilder app)
         {
-            app.Run(ctx =>
-            {
-                return ctx.Response.WriteAsync("Hello World!");
-            });
+            app.UseWelcomePage(); // show a welcome page as implemented by Microsoft.Owin.Diagnostics
+
+
+            //app.Run(ctx =>
+            //{
+            //    return ctx.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 
