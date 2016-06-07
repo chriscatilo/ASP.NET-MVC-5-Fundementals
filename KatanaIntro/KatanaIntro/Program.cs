@@ -9,22 +9,7 @@ using System.Web.Http;
 namespace KatanaIntro
 {
     using AppFunc = Func<IDictionary<string, object>, Task>;
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // start a web server listening to a given http address
-            var uri = "http://localhost:8080";
-            using (WebApp.Start<Startup>(uri))
-            {
-                Console.WriteLine("Started!");
-                Console.ReadKey();
-                Console.WriteLine("Stopping");
-            }
-        }
-    }
-
+    
     public class Startup
     {
         public void Configuration(IAppBuilder app)
